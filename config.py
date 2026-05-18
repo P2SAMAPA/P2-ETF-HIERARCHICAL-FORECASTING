@@ -17,18 +17,16 @@ UNIVERSES = {
     ]
 }
 
-# Hierarchy levels (based on sector classification)
-# For simplicity, we'll predefine a mapping: ETF -> sector
-# We'll auto‑generate from existing sector ETFs? Not needed.
-# We'll assume the user provides a mapping CSV or we derive from names.
-# Here we'll use a simple hard‑coded mapping for the three universes.
-# For demonstration, we'll create a mapping file locally. The engine will load if present.
+# Macro columns (must exist in master_data.parquet)
+MACRO_COLUMNS = ["VIX", "DXY", "T10Y2Y", "TBILL_3M", "IG_SPREAD", "HY_SPREAD"]
+
+# Hierarchy file (optional)
 HIERARCHY_FILE = "etf_hierarchy.csv"
 
 # Rolling windows (days)
 WINDOWS = [63, 252, 504, 1008, 2016]
 
-# Forecasting method: "bottom_up" or "top_down" or "optimal_combination"
+# Forecasting method: "bottom_up", "top_down", "optimal_combination"
 METHOD = "optimal_combination"
 
 TOP_N = 3
