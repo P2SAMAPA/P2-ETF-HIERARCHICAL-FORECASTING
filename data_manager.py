@@ -23,6 +23,12 @@ def prepare_returns_matrix(df, universe_tickers):
     returns = returns.dropna(how='all')
     return returns
 
+def get_macro_data(df):
+    macro_cols = [c for c in config.MACRO_COLUMNS if c in df.columns]
+    macro = df[macro_cols].copy()
+    macro = macro.ffill().dropna()
+    return macro
+
 def load_hierarchy(universe_tickers):
     """
     Load or create a hierarchy mapping: ETF -> sector.
